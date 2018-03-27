@@ -50,33 +50,33 @@ function createBaseDir {
 function downloadMule {
     cd ${BASE_DIR}
     echo;echo ">>> Downloading Mule EE runtime"
-    wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${MULE_VERSION}.zip
+    sudo wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${MULE_VERSION}.zip
     echo;echo ">>> Extracting Mule EE runtime. Please wait..."
-    unzip -q ${BASE_DIR}/mule-ee-distribution-standalone-${MULE_VERSION}.zip
+    sudo unzip -q ${BASE_DIR}/mule-ee-distribution-standalone-${MULE_VERSION}.zip
 }
 
 function downloadServiceWrapper {
     cd ${BASE_DIR}
     echo;echo ">>> Downloading Tanuki wrapper"
-    wget https://download.tanukisoftware.com/wrapper/${WRAPPER_VERSION}/wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo wget https://download.tanukisoftware.com/wrapper/${WRAPPER_VERSION}/wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
     echo;echo ">>> Extracting Tanuki wrapper"
-    tar zxf wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo tar zxf wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
 }
 
 function patchMuleServiceWrapper {
     echo;echo ">>> Patching Mule runtime libraries"
-    cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/libwrapper.so ${MULE_HOME}/lib/boot/libwrapper-linux-armhf-32.so
-    cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/wrapper.jar ${MULE_HOME}/lib/boot/wrapper-3.2.3.jar
-    cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/bin/wrapper ${MULE_HOME}/lib/boot/exec/wrapper-linux-armhf-32
+    sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/libwrapper.so ${MULE_HOME}/lib/boot/libwrapper-linux-armhf-32.so
+    sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/wrapper.jar ${MULE_HOME}/lib/boot/wrapper-3.2.3.jar
+    sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/bin/wrapper ${MULE_HOME}/lib/boot/exec/wrapper-linux-armhf-32
 }
 
 function setMuleConfiguration {
     echo;echo ">>> Modifying wrapper.conf configuration file"
-    sed -i 's/wrapper.java.initmemory=1024/wrapper.java.initmemory=256/g' ${MULE_HOME}/conf/wrapper.conf
-    sed -i 's/wrapper.java.maxmemory=1024/wrapper.java.maxmemory=512/g' ${MULE_HOME}/conf/wrapper.conf
+    sudo sed -i 's/wrapper.java.initmemory=1024/wrapper.java.initmemory=256/g' ${MULE_HOME}/conf/wrapper.conf
+    sudo sed -i 's/wrapper.java.maxmemory=1024/wrapper.java.maxmemory=512/g' ${MULE_HOME}/conf/wrapper.conf
 
     echo;echo ">>> Modifying mule launch script"
-    sed -i 's/case "$PROC_ARCH" in/case "$PROC_ARCH" in\n   'armv7l')\n        echo "Armhf architecture detected"\n        DIST_ARCH="armhf"\n        DIST_BITS="32"\n        break;;/' ${MULE_HOME}/bin/mule
+    sudo sed -i 's/case "$PROC_ARCH" in/case "$PROC_ARCH" in\n   'armv7l')\n        echo "Armhf architecture detected"\n        DIST_ARCH="armhf"\n        DIST_BITS="32"\n        break;;/' ${MULE_HOME}/bin/mule
 }
 
 function setPermissions {
