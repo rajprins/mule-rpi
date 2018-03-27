@@ -52,7 +52,7 @@ function downloadMule {
     echo;echo ">>> Downloading Mule EE runtime"
     wget https://s3.amazonaws.com/new-mule-artifacts/mule-ee-distribution-standalone-${MULE_VERSION}.zip
     echo;echo ">>> Extracting Mule EE runtime. Please wait..."
-    unzip -q mule-ee-distribution-standalone-${MULE_VERSION}.tar.gz
+    unzip -q mule-ee-distribution-standalone-${MULE_VERSION}.zip
 }
 
 function downloadServiceWrapper {
