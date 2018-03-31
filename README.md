@@ -1,6 +1,6 @@
 # mule-rpi
 
-Scripts for installing and configuring Mule runtime on a Raspberry Pi model 3/3B/3B+
+Scripts for installing and configuring Mule runtime on a Raspberry Pi model 3/3B/3B+. Do not use on older models of the Raspberry Pi.
 
 ### Usage
 If your Raspberry Pi has an active internet connection, you can download and run these scripts directly from the Rpi.
