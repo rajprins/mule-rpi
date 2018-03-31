@@ -28,6 +28,8 @@ function createUser {
     if ! [ `id -u $USER_TO_CHECK 2>/dev/null || echo -1` -ge 0 ]; then 
         echo "Creating user 'mule'"
         sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
+        sudo mkdir /home/mule
+        sudo chown mule:mule /home/mule
         echo "User created. Please enter a password for user mule."
         sudo passwd mule
     else
