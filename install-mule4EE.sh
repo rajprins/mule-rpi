@@ -30,9 +30,11 @@ function createUser {
         sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
         sudo mkdir /home/mule
         sudo chown mule:mule /home/mule
-        echo "User created. Please enter a password for user mule."
-        sudo passwd mule
-
+	sudo passwd mule <<EOF
+mule
+mule
+EOF
+	echo "User created. Default password for user 'mule' is 'mule'."
     else
         echo "No action required. User 'mule' already exists."
     fi
