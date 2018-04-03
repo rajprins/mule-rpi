@@ -25,7 +25,7 @@ function installPackages {
 
 function createUser {
     echo;echo ">>> Preparing user 'mule'"
-    if ! [ `id -u $USER_TO_CHECK 2>/dev/null || echo -1` -ge 0 ]; then 
+    if ! [ `id -u mule 2>/dev/null || echo -1` -ge 0 ]; then 
         echo "Creating user 'mule'"
         sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
         sudo mkdir /home/mule
