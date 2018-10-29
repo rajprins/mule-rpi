@@ -25,4 +25,4 @@ wget -O - https://raw.githubusercontent.com/rajprins/mule-rpi/master/install-mul
 wget -O - https://raw.githubusercontent.com/rajprins/mule-rpi/master/install-mule4EE.sh | bash
 ```
 
-Note that the Enterprise Editions of the Mule runtime require a license. Without a license, the EE runtime behave as a 30-day trial.
+Note that the Enterprise Editions of the Mule runtime require a license. Without a license, the EE runtime behaves as a 30-day trial.
