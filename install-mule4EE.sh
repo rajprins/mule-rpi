@@ -17,7 +17,7 @@ function introBanner {
 
 function preInstallationOps {
     echo
-    echo "This script will download, extract and install the Mule 4 CE runtime and"
+    echo "This script will download, extract and install the Mule 4 EE runtime and"
     echo "several other required packages. Some actions require root access using"
     echo "the 'sudo' command. Your password might be asked."
     sudo -v
@@ -26,7 +26,7 @@ function preInstallationOps {
 function installPackages {
     echo;bold ">>> Installing required packages"
     sudo apt-get update
-    sudo apt-get install openjdk-8-jdk-headless wget unzip
+    sudo apt-get -y install openjdk-8-jdk-headless wget unzip
 }
 
 function createUser {
@@ -106,13 +106,9 @@ function postInstallationOps {
 # Main
 ##############################################################################
 
-<<<<<<< HEAD
+
 MULE_VERSION=4.2.0
 WRAPPER_VERSION=3.5.37
-=======
-MULE_VERSION=4.1.5
-WRAPPER_VERSION=3.5.35
->>>>>>> 5f83ae5107e422152d8c9c7179531b51d9df29b0
 BASE_DIR=/opt/mule
 MULE_HOME=${BASE_DIR}/mule-enterprise-standalone-${MULE_VERSION}
 
