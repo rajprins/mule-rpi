@@ -9,10 +9,10 @@ function bold {
 function introBanner {
     clear
     echo
-    bold "+-----------------------------------------------------------------------+"
-    bold "| (\_/)     M U L E   R U N T I M E    I N S T A  L L E R               |"
-    bold "| /   \     Mule 4 EE for Raspbian Stretch                              |"
-    bold "+-----------------------------------------------------------------------+"
+    echo "┌───────────────────────────────────────────────────────────────────────┐"
+    echo "│ (\_/)     M U L E S O F T     T R A I N I N G     S E R V I C E S     │"
+    echo "│ /   \     Mule 4 EE runtime installer for Raspbian Stretch/Buster     │"
+    echo "└───────────────────────────────────────────────────────────────────────┘"
 }
 
 function preInstallationOps {
@@ -26,7 +26,7 @@ function preInstallationOps {
 function installPackages {
     echo;bold ">>> Installing required packages"
     sudo apt-get update
-    sudo apt-get install oracle-java8-jdk wget unzip
+    sudo apt-get install openjdk-8-jdk-headless wget unzip
 }
 
 function createUser {
@@ -36,11 +36,11 @@ function createUser {
         sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
         sudo mkdir /home/mule
         sudo chown mule:mule /home/mule
-	sudo passwd mule <<EOF
+   sudo passwd mule <<EOF
 mule
 mule
 EOF
-	echo "User created. Default password for user 'mule' is 'mule'."
+   echo "User created. Default password for user 'mule' is 'mule'."
     else
         echo "User 'mule' already exists. No action required."
     fi
@@ -106,8 +106,13 @@ function postInstallationOps {
 # Main
 ##############################################################################
 
+<<<<<<< HEAD
+MULE_VERSION=4.2.0
+WRAPPER_VERSION=3.5.37
+=======
 MULE_VERSION=4.1.5
 WRAPPER_VERSION=3.5.35
+>>>>>>> 5f83ae5107e422152d8c9c7179531b51d9df29b0
 BASE_DIR=/opt/mule
 MULE_HOME=${BASE_DIR}/mule-enterprise-standalone-${MULE_VERSION}
 
