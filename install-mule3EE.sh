@@ -9,10 +9,10 @@ function bold {
 function introBanner {
     clear
     echo
-    bold "+-----------------------------------------------------------------------+"
-    bold "| (\_/)     M U L E   R U N T I M E    I N S T A  L L E R               |"
-    bold "| /   \     Mule 3 EE for Raspbian Stretch                              |"
-    bold "+-----------------------------------------------------------------------+"
+    echo "┌───────────────────────────────────────────────────────────────────────┐"
+    echo "│ (\_/)    M U L E   R U N T I M E   I N S T A L L E R                  │"
+    echo "│ /   \    Mule 3 EE runtime installer for Raspbian Stretch/Buster      │"
+    echo "└───────────────────────────────────────────────────────────────────────┘"
 }
 
 function preInstallationOps {
@@ -96,6 +96,10 @@ function setPermissions {
 }
 
 function postInstallationOps {
+    echo;bold ">>> Cleaning up"
+    cd ${BASE_DIR}
+    sudo rm wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo rm mule-ee-distribution-standalone-${MULE_VERSION}.zip
     echo
     echo "All done. Log in as user 'mule' and start Mule runtime using this command:"
     bold "${MULE_HOME}/bin/mule start"

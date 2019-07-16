@@ -10,8 +10,8 @@ function introBanner {
     clear
     echo
     echo "┌───────────────────────────────────────────────────────────────────────┐"
-    echo "│ (\_/)     M U L E S O F T     T R A I N I N G     S E R V I C E S     │"
-    echo "│ /   \     Mule 4 CE runtime installer for Raspbian Stretch/Buster     │"
+    echo "│ (\_/)    M U L E   R U N T I M E   I N S T A L L E R                  │"
+    echo "│ /   \    Mule 4 CE runtime installer for Raspbian Stretch/Buster      │"
     echo "└───────────────────────────────────────────────────────────────────────┘"
 }
 
@@ -96,6 +96,10 @@ function setPermissions {
 }
 
 function postInstallationOps {
+    echo;bold ">>> Cleaning up"
+    cd ${BASE_DIR}
+    sudo rm wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo rm mule-standalone-${MULE_VERSION}.tar.gz  
     echo
     echo "All done. Log in as user 'mule' and start Mule runtime using this command:"
     bold "${MULE_HOME}/bin/mule start"

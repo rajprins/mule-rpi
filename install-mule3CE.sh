@@ -9,10 +9,10 @@ function bold {
 function introBanner {
     clear
     echo
-    bold "+-----------------------------------------------------------------------+"
-    bold "| (\_/)     M U L E   R U N T I M E    I N S T A  L L E R               |"
-    bold "| /   \     Mule 3 CE for Raspbian Stretch                              |"
-    bold "+-----------------------------------------------------------------------+"
+    echo "┌───────────────────────────────────────────────────────────────────────┐"
+    echo "│ (\_/)    M U L E   R U N T I M E   I N S T A L L E R                  │"
+    echo "│ /   \    Mule 3 EE runtime installer for Raspbian Stretch/Buster      │"
+    echo "└───────────────────────────────────────────────────────────────────────┘"
 }
 
 function preInstallationOps {
@@ -32,17 +32,17 @@ function installPackages {
 function createUser {
     echo;bold ">>> Preparing user 'mule'"
     if ! [ `id -u mule 2>/dev/null || echo -1` -ge 0 ]; then 
-        echo "Creating user 'mule'"
-        sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
-        sudo mkdir /home/mule
-        sudo chown mule:mule /home/mule
-	sudo passwd mule <<EOF
+       echo "Creating user 'mule'"
+       sudo useradd -s /bin/bash -d /home/mule -U -G sudo mule
+       sudo mkdir /home/mule
+       sudo chown mule:mule /home/mule
+	   sudo passwd mule <<EOF
 mule
 mule
 EOF
-	echo "User created. Default password for user 'mule' is 'mule'."
+	   echo "User created. Default password for user 'mule' is 'mule'."
     else
-        echo "User 'mule' already exists. No action required."
+       echo "User 'mule' already exists. No action required."
     fi
 }
 
@@ -68,9 +68,9 @@ function downloadMule {
 
 function downloadServiceWrapper {
     cd ${BASE_DIR}
-    echo;bold ">>> Downloading Tanuki wrapper"
+    echo;bold ">>> Downloading Tanuki service wrapper"
     sudo wget https://download.tanukisoftware.com/wrapper/${WRAPPER_VERSION}/wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
-    echo;bold ">>> Extracting Tanuki wrapper"
+    echo;bold ">>> Extracting Tanuki service wrapper"
     sudo tar zxf wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
 }
 
@@ -96,6 +96,10 @@ function setPermissions {
 }
 
 function postInstallationOps {
+    echo;bold ">>> Cleaning up"
+    cd ${BASE_DIR}
+    sudo rm wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo rm mule-standalone-${MULE_VERSION}.tar.gz      
     echo
     echo "All done. Log in as user 'mule' and start Mule runtime using this command:"
     bold "${MULE_HOME}/bin/mule start"
