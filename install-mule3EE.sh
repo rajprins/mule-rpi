@@ -17,7 +17,7 @@ function introBanner {
 
 function preInstallationOps {
     echo
-    echo "This script will download, extract and install the Mule 3 CE runtime and"
+    echo "This script will download, extract and install the Mule 3 EE runtime and"
     echo "several other required packages. Some actions require root access using"
     echo "the 'sudo' command. Your password might be asked."
     sudo -v
@@ -77,7 +77,7 @@ function downloadServiceWrapper {
 function patchMuleServiceWrapper {
     echo;bold ">>> Patching Mule runtime libraries"
     sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/libwrapper.so ${MULE_HOME}/lib/boot/libwrapper-linux-armhf-32.so
-    sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/wrapper.jar ${MULE_HOME}/lib/boot/wrapper-3.2.3.jar
+    sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/lib/wrapper.jar ${MULE_HOME}/lib/boot/wrapper-${WRAPPER_VERSION}.jar
     sudo cp ${BASE_DIR}/wrapper-linux-armhf-32-${WRAPPER_VERSION}/bin/wrapper ${MULE_HOME}/lib/boot/exec/wrapper-linux-armhf-32
 }
 
