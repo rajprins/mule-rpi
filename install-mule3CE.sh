@@ -26,7 +26,7 @@ function preInstallationOps {
 function installPackages {
     echo;bold ">>> Installing required packages"
     sudo apt-get update
-    sudo apt-get install oracle-java8-jdk wget
+    sudo apt-get -y install openjdk-8-jdk-headless
 }
 
 function createUser {
