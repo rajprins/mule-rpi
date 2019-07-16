@@ -26,7 +26,7 @@ function preInstallationOps {
 function installPackages {
     echo;bold ">>> Installing required packages"
     sudo apt-get update
-    sudo apt-get -y install openjdk-8-jdk-headless wget unzip
+    sudo apt-get -y install openjdk-8-jdk-headless unzip
 }
 
 function createUser {
@@ -98,7 +98,7 @@ function setPermissions {
 function postInstallationOps {
     echo;bold ">>> Cleaning up"
     cd ${BASE_DIR}
-    sudo rm wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo rm -r wrapper-linux-armhf-32-${WRAPPER_VERSION}*
     sudo rm mule-ee-distribution-standalone-${MULE_VERSION}.zip
     echo
     echo "All done. Log in as user 'mule' and start Mule runtime using this command:"

@@ -98,7 +98,7 @@ function setPermissions {
 function postInstallationOps {
     echo;bold ">>> Cleaning up"
     cd ${BASE_DIR}
-    sudo rm wrapper-linux-armhf-32-${WRAPPER_VERSION}.tar.gz
+    sudo rm -r wrapper-linux-armhf-32-${WRAPPER_VERSION}*
     sudo rm mule-standalone-${MULE_VERSION}.tar.gz  
     echo
     echo "All done. Log in as user 'mule' and start Mule runtime using this command:"
