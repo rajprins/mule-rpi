@@ -111,7 +111,7 @@ function postInstallationOps {
 ##############################################################################
 
 
-MULE_VERSION=4.2.0
+MULE_VERSION=4.3.0
 WRAPPER_VERSION=3.5.37
 BASE_DIR=/opt/mule
 MULE_HOME=${BASE_DIR}/mule-enterprise-standalone-${MULE_VERSION}
